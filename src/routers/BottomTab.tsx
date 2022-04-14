@@ -50,7 +50,9 @@ export default function BottomTab() {
             })
             }
         >
-            <Tab.Screen name={routes.home.name} component={routes.home.component} />
+            <Tab.Screen name={routes.home.name} component={routes.home.component} options={{
+                headerShown: false
+            }} />
             <Tab.Screen name={routes.news.name} component={routes.news.component} />
             <Tab.Screen name={routes.notifikasi.name} component={routes.notifikasi.component} />
             <Tab.Screen name={routes.account.name} component={routes.account.component} />
