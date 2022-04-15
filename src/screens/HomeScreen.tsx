@@ -4,6 +4,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { brochette, burger, desayuno, pizza, sandwich } from '../assets/images';
 import CardCategory from '../components/cards/CardCategory';
 import InputSearch from '../components/form/InputSearch';
+import HeaderProductCategory from '../components/headers/HeaderProductCategory';
+import ListHorizontal from '../components/list/ListHorizontal';
 import { cocolate, danger100, secondary100, white } from '../utils/colors';
 
 export default function HomeScreen() {
@@ -25,25 +27,31 @@ export default function HomeScreen() {
             <Text style={styles.halo}>Hey There!</Text>
             <Text style={styles.title}>Find your meal now</Text>
             <InputSearch />
-            <View style={{ marginTop: 20 }}>
-                <View style={{ flexDirection: 'row', 'justifyContent': 'space-between' }}>
-                    <Text style={{ fontWeight: 'bold', color: cocolate }}>Categories</Text>
-                    <Text style={{ fontWeight: 'bold', color: cocolate }}>See All</Text>
-                </View>
-            </View>
-            <ScrollView
-                showsHorizontalScrollIndicator={false}
-                horizontal={true}
-                style={styles.scrollView}
-            >
-                {
-                    datacategory.map((item, index) => {
-                        let color = index == 0 ? white : secondary100
-                        let bgColor = index == 0 ? danger100 : white
-                        return <CardCategory item={item} color={color} bgColor={bgColor} />
-                    })
-                }
-            </ScrollView>
+            <ListHorizontal
+                label='Categories'
+                onPressSeeAll={() => console.log('halo')}
+                data={datacategory}
+                renderItem={({ item, index }) => {
+                    let color = index == 0 ? white : secondary100
+                    let bgColor = index == 0 ? danger100 : white
+                    return <CardCategory item={item} color={color} bgColor={bgColor} />
+                }}
+                onPress={() => console.log('a')}
+                top={30}
+            />
+
+            <ListHorizontal
+                label='Meals for you'
+                onPressSeeAll={() => console.log('halo')}
+                data={datacategory}
+                renderItem={({ item, index }) => {
+                    let color = index == 0 ? white : secondary100
+                    let bgColor = index == 0 ? danger100 : white
+                    return <CardCategory item={item} color={color} bgColor={bgColor} />
+                }}
+                onPress={() => console.log('a')}
+                top={30}
+            />
 
         </SafeAreaView>
     );
