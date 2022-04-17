@@ -7,8 +7,10 @@ import CardProduct from '../components/cards/CardProduct';
 import InputSearch from '../components/form/InputSearch';
 import ListHorizontal from '../components/list/ListHorizontal';
 import { cocolate, danger, danger100, secondary, secondary100, white } from '../utils/colors';
+import { NavigationProp } from '@react-navigation/native';
+import routes from '../routers/routes';
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }: { navigation: NavigationProp<any, any> }) {
     const datacategory = [
         { category: 'Pizzas', image: sourceImage.pizza, },
         { category: 'Burger', image: sourceImage.burger, },
@@ -23,16 +25,16 @@ export default function HomeScreen() {
     ]
 
     const dataProduct = [
-        { name: 'Pizzas', image: sourceImage.pizza, body: 'lorem lorem lorem loram', price: 50, from: 90 },
-        { name: 'Burger', image: sourceImage.burger, body: 'lorem lorem lorem loram', price: 25, from: 0 },
-        { name: 'Sandwich', image: sourceImage.sandwich, body: 'lorem lorem lorem loram', price: 30, from: 90 },
-        { name: 'Desayuno', image: sourceImage.desayuno, body: 'lorem lorem lorem loram', price: 21, from: 0 },
-        { name: 'Brochets', image: sourceImage.brochette, body: 'lorem lorem lorem loram', price: 25, from: 90 },
-        { name: 'Pizzas', image: sourceImage.pizza, body: 'lorem lorem lorem loram', price: 12, from: 90 },
-        { name: 'Burger', image: sourceImage.burger, body: 'lorem lorem lorem loram', price: 32, from: 0 },
-        { name: 'Sandwich', image: sourceImage.sandwich, body: 'lorem lorem lorem loram', price: 42, from: 90 },
-        { name: 'Desayuno', image: sourceImage.desayuno, body: 'lorem lorem lorem loram', price: 33, from: 0 },
-        { name: 'Brochets', image: sourceImage.brochette, body: 'lorem lorem lorem loram', price: 50, from: 90 },
+        { name: 'Pizzas', image: sourceImage.pizza, body: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore nemo exercitationem debitis, non ut quos unde voluptatum magnam reiciendis vel. Facilis cupiditate est aspernatur officiis vitae, nihil aliquid perspiciatis quis!', price: 50, from: 90 },
+        { name: 'Burger', image: sourceImage.burger, body: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore nemo exercitationem debitis, non ut quos unde voluptatum magnam reiciendis vel. Facilis cupiditate est aspernatur officiis vitae, nihil aliquid perspiciatis quis!', price: 25, from: 0 },
+        { name: 'Sandwich', image: sourceImage.sandwich, body: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore nemo exercitationem debitis, non ut quos unde voluptatum magnam reiciendis vel. Facilis cupiditate est aspernatur officiis vitae, nihil aliquid perspiciatis quis!', price: 30, from: 90 },
+        { name: 'Desayuno', image: sourceImage.desayuno, body: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore nemo exercitationem debitis, non ut quos unde voluptatum magnam reiciendis vel. Facilis cupiditate est aspernatur officiis vitae, nihil aliquid perspiciatis quis!', price: 21, from: 0 },
+        { name: 'Brochets', image: sourceImage.brochette, body: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore nemo exercitationem debitis, non ut quos unde voluptatum magnam reiciendis vel. Facilis cupiditate est aspernatur officiis vitae, nihil aliquid perspiciatis quis!', price: 25, from: 90 },
+        { name: 'Pizzas', image: sourceImage.pizza, body: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore nemo exercitationem debitis, non ut quos unde voluptatum magnam reiciendis vel. Facilis cupiditate est aspernatur officiis vitae, nihil aliquid perspiciatis quis!', price: 12, from: 90 },
+        { name: 'Burger', image: sourceImage.burger, body: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore nemo exercitationem debitis, non ut quos unde voluptatum magnam reiciendis vel. Facilis cupiditate est aspernatur officiis vitae, nihil aliquid perspiciatis quis!', price: 32, from: 0 },
+        { name: 'Sandwich', image: sourceImage.sandwich, body: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore nemo exercitationem debitis, non ut quos unde voluptatum magnam reiciendis vel. Facilis cupiditate est aspernatur officiis vitae, nihil aliquid perspiciatis quis!', price: 42, from: 90 },
+        { name: 'Desayuno', image: sourceImage.desayuno, body: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore nemo exercitationem debitis, non ut quos unde voluptatum magnam reiciendis vel. Facilis cupiditate est aspernatur officiis vitae, nihil aliquid perspiciatis quis!', price: 33, from: 0 },
+        { name: 'Brochets', image: sourceImage.brochette, body: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore nemo exercitationem debitis, non ut quos unde voluptatum magnam reiciendis vel. Facilis cupiditate est aspernatur officiis vitae, nihil aliquid perspiciatis quis!', price: 50, from: 90 },
     ]
     return (
         <SafeAreaView style={styles.container}>
@@ -58,7 +60,7 @@ export default function HomeScreen() {
                 onPressSeeAll={() => console.log('halo')}
                 data={dataProduct}
                 renderItem={({ item, index }) => {
-                    return <CardProduct name={item.name} body={item.body} image={item.image} price={item.price} pricefrom={item.from} />
+                    return <CardProduct name={item.name} body={item.body} image={item.image} price={item.price} pricefrom={item.from} onPress={() => navigation.navigate(routes.detail.name, { data: item })} />
                 }}
                 onPress={() => console.log('a')}
                 top={30}

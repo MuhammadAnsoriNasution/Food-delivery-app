@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ImageSourcePropType, StyleSheet, Text, View } from 'react-native';
+import { Image, ImageSourcePropType, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import sourceImage from '../../assets/images';
 import { cocolate, danger100, secondary, secondary100, white } from '../../utils/colors';
 
@@ -8,13 +8,14 @@ type Props = {
     body: string,
     image: ImageSourcePropType,
     price: number,
-    pricefrom: number
+    pricefrom: number,
+    onPress: () => void
 
 }
-export default function CardProduct({ name, body, image, price, pricefrom }: Props) {
+export default function CardProduct({ name, body, image, price, pricefrom, onPress }: Props) {
 
     return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={() => onPress()}>
             <View style={styles.content}>
                 <View style={styles.wrapImage}>
                     <Image source={image} style={[styles.image, { resizeMode: "contain" }]} />
@@ -28,7 +29,7 @@ export default function CardProduct({ name, body, image, price, pricefrom }: Pro
                     Antes <Text style={{ textDecorationLine: 'line-through', marginLeft: 5 }}>{`$${pricefrom}.00`}</Text>
                 </Text> : null}
             </View>
-        </View>
+        </TouchableOpacity>
     );
 }
 
