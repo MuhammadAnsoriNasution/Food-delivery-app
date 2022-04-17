@@ -6,7 +6,7 @@ import desayuno from './desayuno.png'
 
 
 
-export {
+export default {
     pizza,
     burger,
     sandwich,

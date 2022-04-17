@@ -1,25 +1,38 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { brochette, burger, desayuno, pizza, sandwich } from '../assets/images';
+import sourceImage from '../assets/images';
 import CardCategory from '../components/cards/CardCategory';
+import CardProduct from '../components/cards/CardProduct';
 import InputSearch from '../components/form/InputSearch';
-import HeaderProductCategory from '../components/headers/HeaderProductCategory';
 import ListHorizontal from '../components/list/ListHorizontal';
-import { cocolate, danger100, secondary100, white } from '../utils/colors';
+import { cocolate, danger, danger100, secondary, secondary100, white } from '../utils/colors';
 
 export default function HomeScreen() {
     const datacategory = [
-        { category: 'Pizzas', image: pizza, },
-        { category: 'Burger', image: burger, },
-        { category: 'Sandwich', image: sandwich, },
-        { category: 'Desayuno', image: desayuno, },
-        { category: 'Brochets', image: brochette, },
-        { category: 'Pizzas', image: pizza, },
-        { category: 'Burger', image: burger, },
-        { category: 'Sandwich', image: sandwich, },
-        { category: 'Desayuno', image: desayuno, },
-        { category: 'Brochets', image: brochette, },
+        { category: 'Pizzas', image: sourceImage.pizza, },
+        { category: 'Burger', image: sourceImage.burger, },
+        { category: 'Sandwich', image: sourceImage.sandwich, },
+        { category: 'Desayuno', image: sourceImage.desayuno, },
+        { category: 'Brochets', image: sourceImage.brochette, },
+        { category: 'Pizzas', image: sourceImage.pizza, },
+        { category: 'Burger', image: sourceImage.burger, },
+        { category: 'Sandwich', image: sourceImage.sandwich, },
+        { category: 'Desayuno', image: sourceImage.desayuno, },
+        { category: 'Brochets', image: sourceImage.brochette, },
+    ]
+
+    const dataProduct = [
+        { name: 'Pizzas', image: sourceImage.pizza, body: 'lorem lorem lorem loram', price: 50, from: 90 },
+        { name: 'Burger', image: sourceImage.burger, body: 'lorem lorem lorem loram', price: 25, from: 0 },
+        { name: 'Sandwich', image: sourceImage.sandwich, body: 'lorem lorem lorem loram', price: 30, from: 90 },
+        { name: 'Desayuno', image: sourceImage.desayuno, body: 'lorem lorem lorem loram', price: 21, from: 0 },
+        { name: 'Brochets', image: sourceImage.brochette, body: 'lorem lorem lorem loram', price: 25, from: 90 },
+        { name: 'Pizzas', image: sourceImage.pizza, body: 'lorem lorem lorem loram', price: 12, from: 90 },
+        { name: 'Burger', image: sourceImage.burger, body: 'lorem lorem lorem loram', price: 32, from: 0 },
+        { name: 'Sandwich', image: sourceImage.sandwich, body: 'lorem lorem lorem loram', price: 42, from: 90 },
+        { name: 'Desayuno', image: sourceImage.desayuno, body: 'lorem lorem lorem loram', price: 33, from: 0 },
+        { name: 'Brochets', image: sourceImage.brochette, body: 'lorem lorem lorem loram', price: 50, from: 90 },
     ]
     return (
         <SafeAreaView style={styles.container}>
@@ -32,7 +45,7 @@ export default function HomeScreen() {
                 onPressSeeAll={() => console.log('halo')}
                 data={datacategory}
                 renderItem={({ item, index }) => {
-                    let color = index == 0 ? white : secondary100
+                    let color = index == 0 ? secondary100 : secondary
                     let bgColor = index == 0 ? danger100 : white
                     return <CardCategory item={item} color={color} bgColor={bgColor} />
                 }}
@@ -43,11 +56,9 @@ export default function HomeScreen() {
             <ListHorizontal
                 label='Meals for you'
                 onPressSeeAll={() => console.log('halo')}
-                data={datacategory}
+                data={dataProduct}
                 renderItem={({ item, index }) => {
-                    let color = index == 0 ? white : secondary100
-                    let bgColor = index == 0 ? danger100 : white
-                    return <CardCategory item={item} color={color} bgColor={bgColor} />
+                    return <CardProduct name={item.name} body={item.body} image={item.image} price={item.price} pricefrom={item.from} />
                 }}
                 onPress={() => console.log('a')}
                 top={30}
